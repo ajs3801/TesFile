@@ -12,7 +12,7 @@ function templateHTML(title, list, body){
     <meta charset="utf-8">
   </head>
   <body>
-    <h1><a href="/">WEB</a></h1>
+    <h1><a href="/">TesFile</a></h1>
     ${list}
     <a href="/create">create</a>
     ${body}
@@ -39,7 +39,7 @@ var app = http.createServer(function(request,response){
       if(queryData.id === undefined){
         fs.readdir('./data', function(error, filelist){
           var title = 'Welcome';
-          var description = 'Hello, Node.js';
+          var description = 'Wirte your profile';
           var list = templateList(filelist);
           var template = templateHTML(title, list, `<h2>${title}</h2>${description}`);
           response.writeHead(200);
@@ -58,13 +58,13 @@ var app = http.createServer(function(request,response){
       }
     } else if(pathname === '/create'){
       fs.readdir('./data', function(error, filelist){
-        var title = 'WEB - create';
+        var title = 'TesFile - create';
         var list = templateList(filelist);
         var template = templateHTML(title, list, `
           <form action="http://localhost:3000/create_process" method="post">
             <p><input type="text" name="title" placeholder="title"></p>
             <p>
-              <textarea name="description" placeholder="description"></textarea>
+              <textarea name="description" placeholder="write your profile specially"></textarea>
             </p>
             <p>
               <input type="submit">
